@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content %}
+<h1 align="center">NoteMaster</h1>
+
+<h2 align="center">Your Notes</h2>
+
+<script>
+function deleteNote(noteId)
+{
+    fetch('/delete-note', {
+        method: "POST",
+        body: JSON.stringify({ noteId: noteId}),
+    }).then((_res) => {
+        window.location.href = "/";
+
+    });
+}
+</script>
+
+<ul class="list-group list-group-flush" id="notes">
+    {% for note in user.notes %}
+    <li class="list-group-item">
+        {{ note.content }}
+        <button type="button" class="close" onclick="deleteNote({{ note.id }})">X</button>
+    </li>
+    {% endfor %}
+</ul>
+
+<form method = "POST">
+    <textarea name="note" id="note" class="form-control"></textarea>
+    <br/>
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Add Note</button>
+    </div>
+</form>
+
+
+{% endblock %}
