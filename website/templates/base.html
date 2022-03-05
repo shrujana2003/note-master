@@ -64,10 +64,11 @@
             {% endblock %}
         </div>
         <!--to include any js, css, img files from static-->
-        <script> 
+        <script
             type="text/javascript"
-            src="{{url_for('static', filename='index.js')}}"
+            src="{{url_for('static', filename='index.js')}}">
         </script>
+
         <script
         src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
